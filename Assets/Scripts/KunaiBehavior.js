@@ -1,13 +1,14 @@
 ﻿#pragma strict
 
+var areaRadius = 12;
+
 var player: GameObject;
 
 var direction: Vector2;
 var speed: float;
 
 function init() {
-    var pos = Random.onUnitSphere * 10;
-    pos.z = 0;
+    var pos = Random.insideUnitCircle.normalized * areaRadius;
     transform.position = pos;
 
     player = GameObject.FindWithTag("Player");
@@ -25,8 +26,8 @@ function Start () {
 }
 
 function outOfCamera() {
-    // TODO: 判断该gameObject是否跑出Camera
-    return false;
+    // DONE: predicate if this is out of camera
+    return transform.position.magnitude > areaRadius;
 }
 
 function Update () {
@@ -42,5 +43,8 @@ function hitPlayer () {
 function OnTriggerEnter2D(collider : Collider2D) {
     if (collider.gameObject == player) {
         hitPlayer();
+    } else if (collider.tag == "Kunai") {
+        // TODO: destroy this and collider
+        Debug.Log("<" + name + ">" + " hit " + "<" + name + ">");
     }
 }
