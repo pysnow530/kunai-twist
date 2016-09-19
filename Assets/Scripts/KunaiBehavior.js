@@ -44,7 +44,10 @@ function OnTriggerEnter2D(collider : Collider2D) {
     if (collider.gameObject == player) {
         hitPlayer();
     } else if (collider.tag == "Kunai") {
-        // TODO: destroy this and collider
-        Debug.Log("<" + name + ">" + " hit " + "<" + name + ">");
+        // TODO: show effects
+
+        // DONE: destroy this and collider
+        Destroy(gameObject);
+        Destroy(collider);
     }
 }

@@ -9,7 +9,7 @@ function Start () {
 }
 
 function Update () {
-    // TODO: continuous attack (not by wave)
+    // DONE: continuous attack (not by wave)
     if (transform.childCount < amount) {
         Instantiate(kunaiPrefab, transform);
     }
