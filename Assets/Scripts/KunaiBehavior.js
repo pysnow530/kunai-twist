@@ -19,10 +19,14 @@ function init() {
     speed = Random.Range(90, 110);
 }
 
+function boot() {
+    var force = direction.normalized * speed;
+    GetComponent.<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
+}
+
 function Start () {
     init();
-    GetComponent.<Rigidbody2D>().AddForce(
-            direction.normalized * speed, ForceMode2D.Force);
+    boot();
 }
 
 function outOfCamera() {
@@ -37,6 +41,7 @@ function Update () {
 }
 
 function hitPlayer () {
+    // TODO: player weaker or die
     Debug.Log("Player was hitted!");
 }
 
@@ -44,7 +49,7 @@ function OnTriggerEnter2D(collider : Collider2D) {
     if (collider.gameObject == player) {
         hitPlayer();
     } else if (collider.tag == "Kunai") {
-        // TODO: show effects
+        // TODO: play effects and audio
 
         // DONE: destroy this and collider
         Destroy(gameObject);

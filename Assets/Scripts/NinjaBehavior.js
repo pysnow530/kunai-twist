@@ -19,4 +19,8 @@ function Update () {
     } else if (dy > 0) {
         transform.Translate(Vector2.up * Time.deltaTime);
     }
+
+    // TODO: support throw kunai
 }
+
+// TODO: add blood gutter
