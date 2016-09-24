@@ -41,8 +41,9 @@ function Update () {
 }
 
 function hitPlayer () {
-    // TODO: player weaker or die
-    Debug.Log("Player was hitted!");
+    // DONE: player weaker or die
+    player.GetComponent.<NinjaBehavior>().wasHitted(10);
+    Debug.Log("hitPlayer()");
 }
 
 function OnTriggerEnter2D(collider : Collider2D) {

@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+var hp: int;
+
 function Start () {
 
 }
@@ -21,6 +23,15 @@ function Update () {
     }
 
     // TODO: support throw kunai
+}
+
+function wasHitted (point: int) {
+    hp -= point;
+
+    if (hp <= 0) {
+        // TODO: play some effects or end scene
+        Debug.Log('died!');
+    }
 }
 
 // TODO: add blood gutter
