@@ -3,6 +3,7 @@
 var areaRadius = 12;
 
 var player: GameObject;
+var bang: GameObject;
 
 var direction: Vector2;
 var speed: float;
@@ -35,7 +36,7 @@ function outOfCamera() {
 }
 
 function Update () {
-    transform.Rotate(Vector3.forward * Time.deltaTime * 10);
+    // transform.Rotate(Vector3.forward * Time.deltaTime * 10);
 
     if (outOfCamera()) {
         Destroy(gameObject);
@@ -53,6 +54,7 @@ function OnTriggerEnter2D(collider : Collider2D) {
         hitPlayer();
     } else if (collider.tag == "Kunai") {
         // TODO: play effects and audio
+        Instantiate(bang, transform.position, Quaternion.identity);
 
         // DONE: destroy this and collider
         Destroy(gameObject);
